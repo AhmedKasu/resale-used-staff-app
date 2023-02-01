@@ -2,12 +2,12 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Contants from 'expo-constants';
 
-import MyAccountScreen from './app/screens/MyAcountScreen';
+import ListingsScreen from './app/screens/ListingsScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <MyAccountScreen />
+      <ListingsScreen />
     </SafeAreaView>
   );
 }
