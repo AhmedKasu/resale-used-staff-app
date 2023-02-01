@@ -1,11 +1,13 @@
-import { SafeAreaView, StyleSheet, Platform, StatusBar } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 
-import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
+import Contants from 'expo-constants';
+
+import MyAccountScreen from './app/screens/MyAcountScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <ListingDetailsScreen />
+      <MyAccountScreen />
     </SafeAreaView>
   );
 }
@@ -13,6 +15,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingTop: Contants.statusBarHeight,
   },
 });

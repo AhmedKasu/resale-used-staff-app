@@ -18,12 +18,12 @@ const WelcomeScreen = () => {
       <View style={styles.buttonContainer}>
         <CustomButton
           title='Login'
-          onPress={console.log('logIn')}
+          onPress={() => console.log('logIn')}
           color={'primary'}
         />
         <CustomButton
           title='Register'
-          onPress={console.log('register')}
+          onPress={() => console.log('register')}
           color={'secondary'}
         />
       </View>
