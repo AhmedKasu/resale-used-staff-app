@@ -1,11 +1,11 @@
 import { SafeAreaView, StyleSheet, Platform, StatusBar } from 'react-native';
 
-import CardScreen from './app/screens/CardScreen';
+import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <CardScreen />
+      <ListingDetailsScreen />
     </SafeAreaView>
   );
 }
