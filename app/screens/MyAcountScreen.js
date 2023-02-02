@@ -1,9 +1,27 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 
 import ListItem from '../components/ListItem';
-import ListIcon from '../components/ListIcon';
+import CustomIcon from '../components/CustomIcon';
+import ListSeparator from '../components/ListSeparator';
 
 import colors from '../config/colors';
+
+const items = [
+  {
+    title: 'My Listings',
+    icon: {
+      name: 'format-list-bulleted',
+      backgroundColor: 'primary',
+    },
+  },
+  {
+    title: 'My Messages',
+    icon: {
+      name: 'email',
+      backgroundColor: 'secondary',
+    },
+  },
+];
 
 const MyAccountScreen = () => {
   return (
@@ -15,28 +33,31 @@ const MyAccountScreen = () => {
           subTitle={'ankassu@gmail.com'}
         />
       </View>
+      <View style={styles.flatList}>
+        <FlatList
+          data={items}
+          keyExtractor={(item) => item.title}
+          ItemSeparatorComponent={ListSeparator}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              onPress={() => console.log('Listing presssed')}
+              IconComponent={
+                <CustomIcon
+                  name={item.icon.name}
+                  color={item.icon.backgroundColor}
+                />
+              }
+            />
+          )}
+        />
+      </View>
+
       <View style={styles.ListingIcon}>
-        <ListIcon
-          name={'format-list-bulleted'}
-          description={'My Listings'}
-          color={'secondary'}
+        <ListItem
+          title={'Logout'}
           onPress={() => console.log('My Listings')}
-        />
-      </View>
-      <View style={styles.messagesIcon}>
-        <ListIcon
-          name={'email'}
-          description={'My Messages'}
-          color={'primary'}
-          onPress={() => console.log('My Messages')}
-        />
-      </View>
-      <View>
-        <ListIcon
-          name={'logout'}
-          description={'Log Out'}
-          color={'warning'}
-          onPress={() => console.log('logout')}
+          IconComponent={<CustomIcon name={'logout'} color={'warning'} />}
         />
       </View>
     </View>
@@ -49,11 +70,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.smokeWhite,
   },
   profile: {
-    backgroundColor: colors.white,
     marginVertical: 20,
   },
-  ListingIcon: {
-    marginTop: 20,
+  flatList: {
+    marginVertical: 40,
   },
   messagesIcon: {
     marginTop: 2,

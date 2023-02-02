@@ -1,17 +1,22 @@
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, TouchableHighlight } from 'react-native';
 
 import CustomText from './CustomText';
 import colors from '../config/colors';
 
-const ListItem = ({ image, title, subTitle }) => {
+const ListItem = ({ image, IconComponent, title, subTitle, onPress }) => {
   return (
-    <View style={styles.itemContainer}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-        <CustomText style={styles.title}>{title}</CustomText>
-        <CustomText style={styles.subTitle}>{subTitle}</CustomText>
+    <TouchableHighlight onPress={onPress}>
+      <View style={styles.itemContainer}>
+        {IconComponent}
+        {image && <Image style={styles.image} source={image} />}
+        <View style={styles.detailsContainer}>
+          <CustomText style={styles.title}>{title}</CustomText>
+          {subTitle && (
+            <CustomText style={styles.subTitle}>{subTitle}</CustomText>
+          )}
+        </View>
       </View>
-    </View>
+    </TouchableHighlight>
   );
 };
 
@@ -19,12 +24,16 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     padding: 15,
+    backgroundColor: colors.white,
   },
   image: {
     width: 70,
     height: 70,
     borderRadius: 35,
-    marginRight: 15,
+  },
+  detailsContainer: {
+    justifyContent: 'center',
+    marginLeft: 15,
   },
   title: {
     fontWeight: '500',

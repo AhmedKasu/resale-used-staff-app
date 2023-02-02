@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 
 import CustomCard from '../components/CustomCard';
 import colors from '../config/colors';
@@ -27,23 +27,26 @@ const listings = [
 const ListingsScreen = () => {
   return (
     <View style={styles.container}>
-      {listings.map((list) => (
-        <CustomCard
-          key={list.id}
-          image={list.image}
-          title={list.title}
-          subTitle={`$${list.price}`}
-        />
-      ))}
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={listings}
+        keyExtractor={(listing) => listing.id.toString()}
+        renderItem={({ item }) => (
+          <CustomCard
+            image={item.image}
+            title={item.title}
+            subTitle={`$${item.price}`}
+          />
+        )}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: colors.smokeWhite,
-    padding: 17,
+    backgroundColor: colors.light,
+    paddingHorizontal: 20,
   },
 });
 
