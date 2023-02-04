@@ -2,10 +2,10 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import AppLogo from '../components/AppLogo';
-import CustomFormField from '../components/CustomFormField';
-import CustomForm from '../components/CustomForm';
-import HideKeyboard from '../components/HideKeyboard';
-import SubmitButton from '../components/SubmitButton';
+import CustomFormField from '../components/AppForm/CustomFormField';
+import CustomForm from '../components/AppForm/CustomForm';
+import HideKeyboard from '../components/AppForm/HideKeyboard';
+import SubmitButton from '../components/AppForm/SubmitButton';
 import * as Yup from 'yup';
 
 const LogInSchema = Yup.object().shape({

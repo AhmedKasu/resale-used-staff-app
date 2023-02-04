@@ -1,8 +1,8 @@
 import { TextInput, StyleSheet, View } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import colors from '../config/colors';
-import defaultStyles from '../config/styles';
+import colors from '../../config/colors';
+import defaultStyles from '../../config/styles';
 
 const CustomTextInput = ({ icon, ...otherProps }) => {
   return (
