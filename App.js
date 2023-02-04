@@ -2,12 +2,12 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Contants from 'expo-constants';
 
-import CustomTextInput from './app/components/customTextInput';
+import LoginScreen from './app/screens/LoginScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <CustomTextInput icon={'email'} placeholder={'Email'} />
+      <LoginScreen />
     </SafeAreaView>
   );
 }

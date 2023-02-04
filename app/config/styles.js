@@ -8,4 +8,10 @@ export default {
     fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
     color: colors.dark,
   },
+  appLogoContainer: {
+    position: 'absolute',
+    top: 80,
+    alignSelf: 'center',
+    alignItems: 'center',
+  },
 };

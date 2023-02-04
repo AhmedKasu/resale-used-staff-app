@@ -1,7 +1,9 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Image, Text } from 'react-native';
+import { ImageBackground, StyleSheet, View, Text } from 'react-native';
 
 import CustomButton from '../components/CustomButton';
+import AppLogo from '../components/AppLogo';
+import defaultStyles from '../config/styles';
 
 const WelcomeScreen = () => {
   return (
@@ -9,10 +11,8 @@ const WelcomeScreen = () => {
       blurRadius={5}
       style={styles.background}
       source={require('../assets/background.jpg')}>
-      <View style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          source={require('../assets/logo-red.png')}></Image>
+      <View style={defaultStyles.appLogoContainer}>
+        <AppLogo />
         <Text style={styles.text}>sell & buy quality stuff </Text>
       </View>
       <View style={styles.buttonContainer}>
@@ -42,12 +42,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-  },
-  logoContainer: {
-    position: 'absolute',
-    top: 80,
-    alignSelf: 'center',
-    alignItems: 'center',
   },
   text: {
     fontSize: 18,
