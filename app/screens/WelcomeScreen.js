@@ -8,9 +8,8 @@ import defaultStyles from '../config/styles';
 const WelcomeScreen = () => {
   return (
     <ImageBackground
-      blurRadius={5}
       style={styles.background}
-      source={require('../assets/background.jpg')}>
+      source={require('../assets/welcomeScreen.jpg')}>
       <View style={defaultStyles.appLogoContainer}>
         <AppLogo />
         <Text style={styles.text}>sell & buy quality stuff </Text>

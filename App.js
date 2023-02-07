@@ -2,12 +2,12 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 
 import Contants from 'expo-constants';
 
-import LoginScreen from './app/screens/LoginScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <LoginScreen />
+      <RegisterScreen />
     </SafeAreaView>
   );
 }

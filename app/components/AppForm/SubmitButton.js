@@ -7,7 +7,6 @@ const SubmitButton = ({ title, color }) => {
   const { handleSubmit, isValid, dirty } = useFormikContext();
   return (
     <>
-      {console.log(isValid)}
       <CustomButton
         disabled={!isValid | !dirty}
         title={title}

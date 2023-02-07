@@ -6,17 +6,12 @@ import CustomFormField from '../components/AppForm/CustomFormField';
 import CustomForm from '../components/AppForm/CustomForm';
 import HideKeyboard from '../components/AppForm/HideKeyboard';
 import SubmitButton from '../components/AppForm/SubmitButton';
+import { validationSchema } from '../utils/formHelpers';
 import * as Yup from 'yup';
 
 const LogInSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Field is required'),
-  password: Yup.string()
-    .required('Field is required')
-    .min(8, 'Password must be 8 characters long')
-    .matches(/[0-9]/, 'Password requires a number')
-    .matches(/[a-z]/, 'Password requires a lowercase letter')
-    .matches(/[A-Z]/, 'Password requires an uppercase letter')
-    .matches(/[^\w]/, 'Password requires a symbol'),
+  email: validationSchema.email,
+  password: validationSchema.email,
 });
 
 const LoginScreen = () => {
@@ -67,7 +62,6 @@ const styles = StyleSheet.create({
     marginTop: 100,
     marginBottom: 20,
   },
-
   inputsContainer: {
     padding: 20,
   },
