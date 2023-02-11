@@ -15,7 +15,11 @@ const CustomTextInput = ({ icon, ...otherProps }) => {
           color={colors.medium}
         />
       )}
-      <TextInput style={defaultStyles.text} {...otherProps} />
+      <TextInput
+        placeholderTextColor={colors.medium}
+        style={[defaultStyles.text, styles.textInput]}
+        {...otherProps}
+      />
     </View>
   );
 };
@@ -31,6 +35,9 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 10,
+  },
+  textInput: {
+    flex: 1,
   },
 });
 

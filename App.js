@@ -1,20 +1,17 @@
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import Contants from 'expo-constants';
-
-import RegisterScreen from './app/screens/RegisterScreen';
+import ListingPostScreen from './app/screens/ListingPostScreen';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <RegisterScreen />
-    </SafeAreaView>
+    <View style={styles.container}>
+      <ListingPostScreen />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Contants.statusBarHeight,
   },
 });

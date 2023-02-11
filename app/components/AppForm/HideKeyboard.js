@@ -1,11 +1,14 @@
-import { TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
+import {
+  TouchableWithoutFeedback,
+  Keyboard,
+  StyleSheet,
+  View,
+} from 'react-native';
 
 const HideKeyboard = ({ children }) => {
   return (
-    <TouchableWithoutFeedback
-      style={styles.container}
-      onPress={() => Keyboard.dismiss()}>
-      {children}
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>{children}</View>
     </TouchableWithoutFeedback>
   );
 };
