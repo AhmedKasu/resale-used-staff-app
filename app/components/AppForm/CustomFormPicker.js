@@ -4,8 +4,7 @@ import CustomPicker from '../CustomPicker';
 import ErrorMessage from '../ErrorMessage';
 
 const CustomFormPicker = ({ icon, placeholder, items, name }) => {
-  const { errors, setFieldValue, setFieldTouched, touched, values } =
-    useFormikContext();
+  const { errors, setFieldValue, touched, values } = useFormikContext();
 
   return (
     <>

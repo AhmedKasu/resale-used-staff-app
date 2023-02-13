@@ -1,7 +1,7 @@
 import { View, Image, StyleSheet } from 'react-native';
 
 import CustomText from '../components/CustomText';
-import ListItem from '../components/ListItem';
+import ListItem from '../components/Lists/ListItem';
 
 import colors from '../config/colors';
 
