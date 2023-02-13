@@ -5,7 +5,13 @@ export default {
   white: '#fff',
   medium: '#6e6969',
   light: '#f8f4f4',
+  grey: '#778899',
   danger: '#ff5252',
   warning: '#ffe66d',
   dark: '#0c0c0c',
+  tomato: '#FF6347',
+  dodgerBlue: '#1e90ff',
+  hotPink: '#FF69B4',
+  slateBlue: '#6A5ACD',
+  springGreen: '#00FF7F',
 };

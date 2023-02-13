@@ -3,7 +3,7 @@ import CustomText from './CustomText';
 const PickerItem = ({ item, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <CustomText style={styles.container}>{item}</CustomText>
+      <CustomText style={styles.container}>{item.label}</CustomText>
     </TouchableOpacity>
   );
 };

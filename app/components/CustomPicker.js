@@ -18,15 +18,18 @@ const CustomPicker = ({
   icon,
   items,
   onSelectItem,
+  numberOfCulumns = 1,
+  PickerItemComponent = PickerItem,
   placeholder,
   selectedItem,
+  width = '100%',
 }) => {
   const [visibility, setVisibility] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setVisibility(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               style={styles.icon}
@@ -47,23 +50,25 @@ const CustomPicker = ({
           />
         </View>
       </TouchableWithoutFeedback>
+
       <Modal visible={visibility} animationType='slide'>
         <SafeAreaScreen>
+          <Button onPress={() => setVisibility(false)} title='close' />
+
           <FlatList
             data={items}
-            keyExtractor={(items) => items.id.toString()}
+            key={numberOfCulumns === 1 ? '_' : '-'}
+            keyExtractor={(items) => +items.id.toString()}
+            numColumns={numberOfCulumns}
             renderItem={({ item }) => (
-              <PickerItem
+              <PickerItemComponent
                 onPress={() => {
                   onSelectItem(item), setVisibility(false);
                 }}
-                item={item.label}
+                item={item}
               />
             )}
           />
-          <View style={styles.button}>
-            <Button onPress={() => setVisibility(false)} title='cancel' />
-          </View>
         </SafeAreaScreen>
       </Modal>
     </>
@@ -75,14 +80,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.light,
     borderRadius: 25,
     flexDirection: 'row',
-    width: '100%',
     padding: 15,
     marginVertical: 10,
-  },
-  button: {
-    position: 'absolute',
-    right: 40,
-    top: 60,
   },
   icon: {
     marginRight: 10,
@@ -90,6 +89,7 @@ const styles = StyleSheet.create({
   text: {
     flex: 1,
   },
+
   placeholder: {
     flex: 1,
     color: colors.medium,

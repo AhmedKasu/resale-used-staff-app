@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
+import CategoriesPickerItemComponent from '../components/CategoriesPickerComponent';
 import CustomForm from '../components/AppForm/CustomForm';
 import CustomFormPicker from '../components/AppForm/CustomFormPicker';
 import CustomFormField from '../components/AppForm/CustomFormField';
@@ -9,10 +10,13 @@ import SubmitButton from '../components/AppForm/SubmitButton';
 import * as Yup from 'yup';
 
 const categories = [
-  { label: 'Clothes', id: 1 },
-  { label: 'Electronics', id: 2 },
-  { label: 'Home Aplliancies', id: 3 },
-  { label: 'Sports', id: 4 },
+  { label: 'Clothing', id: 1, icon: 'shoe-heel', color: 'primary' },
+  { label: 'Cameras', id: 2, icon: 'camera', color: 'tomato' },
+  { label: 'Cars', id: 3, icon: 'car', color: 'dodgerBlue' },
+  { label: 'Sports', id: 4, icon: 'basketball', color: 'warning' },
+  { label: 'Movies & Music', id: 4, icon: 'headphones', color: 'secondary' },
+  { label: 'Books', id: 5, icon: 'book', color: 'springGreen' },
+  { label: 'Other', id: 6, icon: 'devices', color: 'grey' },
 ];
 
 const listingValidation = Yup.object().shape({
@@ -36,18 +40,27 @@ const ListingPostScreen = () => {
           onSubmit={(values) => console.log(values)}
           validationSchema={listingValidation}>
           <View style={styles.container}>
-            <CustomFormField maxLength={255} name='title' placeholder='Title' />
+            <CustomFormField
+              maxLength={255}
+              name='title'
+              placeholder='Title'
+              width='90%'
+            />
             <CustomFormField
               keyboardType='numeric'
               maxLength={8}
               name='price'
               placeholder='Price'
+              width='40%'
             />
             <CustomFormPicker
               items={categories}
               icon='apps'
               name='category'
+              numberOfCulumns={3}
               placeholder='Category'
+              PickerItemComponent={CategoriesPickerItemComponent}
+              width='60%'
             />
             <CustomFormField
               maxLength={255}

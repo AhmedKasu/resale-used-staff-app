@@ -1,6 +1,6 @@
 import { View, StyleSheet } from 'react-native';
 
-import MessagesScreen from './app/screens/MessagesScreen';
+import ListingPostScreen from './app/screens/ListingPostScreen';
 
 const messages = [
   {
@@ -33,7 +33,7 @@ const messages = [
 export default function App() {
   return (
     <View style={styles.container}>
-      <MessagesScreen initialMessages={messages} />
+      <ListingPostScreen />
     </View>
   );
 }
