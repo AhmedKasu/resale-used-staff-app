@@ -4,7 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import colors from '../../config/colors';
 import defaultStyles from '../../config/styles';
 
-const CustomTextInput = ({ icon, width = '100%', ...otherProps }) => {
+const CustomTextInput = ({ icon, currency, width = '100%', ...otherProps }) => {
   return (
     <View style={[styles.container, { width }]}>
       {icon && (
@@ -17,9 +17,12 @@ const CustomTextInput = ({ icon, width = '100%', ...otherProps }) => {
       )}
       <TextInput
         placeholderTextColor={colors.medium}
-        style={styles.textInput}
+        style={[styles.textInput, !currency ? { flex: 1 } : { marginLeft: 5 }]}
         {...otherProps}
       />
+      {currency && (
+        <MaterialIcons name={currency} size={20} color={colors.medium} />
+      )}
     </View>
   );
 };
@@ -31,13 +34,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 15,
     marginVertical: 10,
+    alignItems: 'center',
   },
   icon: {
     marginRight: 10,
   },
   textInput: {
     ...defaultStyles.text,
-    flex: 1,
   },
 });
 

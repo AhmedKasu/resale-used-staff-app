@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 
 import CustomTextInput from './CustomTextInput';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from './ErrorMessage';
 
 const CustomFormField = ({ name, width, ...otherProps }) => {
   const { errors, handleChange, setFieldTouched, touched } = useFormikContext();

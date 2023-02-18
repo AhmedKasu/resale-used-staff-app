@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
-import CustomIcon from './CustomIcon';
-import CustomText from './CustomText';
+import CustomIcon from '../CustomIcon';
+import CustomText from '../CustomText';
 
 const CategoriesPickerItemComponent = ({ item, onPress }) => {
   return (

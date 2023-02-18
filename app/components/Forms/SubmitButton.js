@@ -3,7 +3,7 @@ import { useFormikContext } from 'formik';
 
 import CustomButton from '../CustomButton';
 
-const SubmitButton = ({ title, color }) => {
+const SubmitButton = ({ title, color, width }) => {
   const { handleSubmit, isValid, dirty } = useFormikContext();
   return (
     <>
@@ -11,6 +11,7 @@ const SubmitButton = ({ title, color }) => {
         disabled={!isValid | !dirty}
         title={title}
         color={color}
+        width={width}
         onPress={handleSubmit}
       />
     </>

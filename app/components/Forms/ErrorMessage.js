@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import CustomText from './CustomText';
+import CustomText from '../CustomText';
 
 const ErrorMessage = ({ error, touched }) => {
   if (!touched || !error) return null;

@@ -7,12 +7,14 @@ const CustomButton = ({
   disabled = false,
   title,
   onPress,
+  width = '100%',
 }) => {
   return (
     <TouchableOpacity
       style={[
         styles.button,
         { backgroundColor: colors[color], opacity: disabled ? 0.5 : 1 },
+        { width },
       ]}
       disabled={disabled}
       onPress={onPress}>
@@ -24,7 +26,6 @@ const CustomButton = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
-    width: '100%',
     height: 50,
     marginTop: 15,
     justifyContent: 'center',

@@ -1,12 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 
-import CategoriesPickerItemComponent from '../components/CategoriesPickerComponent';
-import CustomForm from '../components/AppForm/CustomForm';
-import CustomFormPicker from '../components/AppForm/CustomFormPicker';
-import CustomFormField from '../components/AppForm/CustomFormField';
-import HideKeyboard from '../components/AppForm/HideKeyboard';
+import CategoriesPickerItemComponent from '../components/Forms/CategoriesPickerComponent';
+import CustomForm from '../components/Forms/CustomForm';
+import CustomFormPicker from '../components/Forms/CustomFormPicker';
+import CustomFormField from '../components/Forms/CustomFormField';
+import FormImagePicker from '../components/Forms/FormImagePicker';
+import HideKeyboard from '../components/Forms/HideKeyboard';
 import SafeAreaScreen from './SafeAreScreen';
-import SubmitButton from '../components/AppForm/SubmitButton';
+import SubmitButton from '../components/Forms/SubmitButton';
 import * as Yup from 'yup';
 
 const categories = [
@@ -24,6 +25,10 @@ const listingValidation = Yup.object().shape({
   price: Yup.number().required().min(1).max(10000).label('Price'),
   description: Yup.string().label('Description'),
   category: Yup.object().required().nullable().label('Category'),
+  imageUris: Yup.array()
+    .of(Yup.string())
+    .min(2, 'Please upload atleast two images')
+    .max(6, 'Please upload maximum 6 images'),
 });
 
 const ListingPostScreen = () => {
@@ -36,10 +41,12 @@ const ListingPostScreen = () => {
             price: '',
             category: null,
             description: '',
+            imageUris: [],
           }}
           onSubmit={(values) => console.log(values)}
           validationSchema={listingValidation}>
           <View style={styles.container}>
+            <FormImagePicker name='imageUris' />
             <CustomFormField
               maxLength={255}
               name='title'
@@ -49,6 +56,7 @@ const ListingPostScreen = () => {
             <CustomFormField
               keyboardType='numeric'
               maxLength={8}
+              currency='euro'
               name='price'
               placeholder='Price'
               width='40%'
@@ -69,7 +77,7 @@ const ListingPostScreen = () => {
               numberOfLines={3}
               placeholder='Description'
             />
-            <SubmitButton title='Submit' />
+            <SubmitButton title='Submit' width='55%' />
           </View>
         </CustomForm>
       </SafeAreaScreen>

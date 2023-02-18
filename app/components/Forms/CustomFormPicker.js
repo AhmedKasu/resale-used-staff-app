@@ -1,7 +1,7 @@
 import { useFormikContext } from 'formik';
 
 import CustomPicker from '../CustomPicker';
-import ErrorMessage from '../ErrorMessage';
+import ErrorMessage from './ErrorMessage';
 
 const CustomFormPicker = ({
   icon,
