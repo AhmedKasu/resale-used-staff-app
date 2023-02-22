@@ -2,6 +2,8 @@ import { View, StyleSheet, FlatList } from 'react-native';
 
 import CustomCard from '../components/CustomCard';
 import colors from '../config/colors';
+import routes from '../components/Navigation/routes';
+import SafeAreaScreen from './SafeAreScreen';
 
 const listings = [
   {
@@ -24,22 +26,27 @@ const listings = [
   },
 ];
 
-const ListingsScreen = () => {
+const ListingsScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
-          <CustomCard
-            image={item.image}
-            title={item.title}
-            subTitle={`$${item.price}`}
-          />
-        )}
-      />
-    </View>
+    <SafeAreaScreen>
+      <View style={styles.container}>
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={listings}
+          keyExtractor={(listing) => listing.id.toString()}
+          renderItem={({ item }) => (
+            <CustomCard
+              image={item.image}
+              title={item.title}
+              subTitle={`$${item.price}`}
+              onPress={() =>
+                navigation.navigate(routes.LISTING_DETAILS_SCREEN, item)
+              }
+            />
+          )}
+        />
+      </View>
+    </SafeAreaScreen>
   );
 };
 

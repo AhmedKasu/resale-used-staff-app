@@ -1,17 +1,13 @@
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import navigationTheme from './app/components/Navigation/navigationTheme';
 
-import ListingPostScreen from './app/screens/ListingPostScreen';
+import AppNavigator from './app/components/Navigation/AppNavigator';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ListingPostScreen />
-    </View>
+    <NavigationContainer theme={navigationTheme}>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

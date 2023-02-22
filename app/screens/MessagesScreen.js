@@ -6,7 +6,35 @@ import ListItemDeleteAction from '../components/Lists/ListItemDeleteAction';
 import ListSeparator from '../components/Lists/ListSeparator';
 import SafeAreaScreen from '../screens/SafeAreScreen';
 
-const MessagesScreen = ({ initialMessages }) => {
+const messages = [
+  {
+    id: 1,
+    sender: {
+      name: 'Ahmed Kasu',
+      image: require('../assets/Ahmed.jpg'),
+    },
+    message: 'Hi! is this still available?',
+  },
+  {
+    id: 2,
+    sender: {
+      name: 'Beve Blasha',
+      image: require('../assets/Ahmed.jpg'),
+    },
+    message: 'Hi! is this still available?',
+  },
+  {
+    id: 3,
+    sender: {
+      name: 'Wayne Rooney',
+      image: require('../assets/Ahmed.jpg'),
+    },
+    message:
+      'Hi! I am intrested in this camera. Is it still available? sjnsdöjsödjsdökc sdökc sdöksd öskd sdök sdöks',
+  },
+];
+
+const MessagesScreen = ({ initialMessages = messages }) => {
   const [messages, setMessages] = useState(initialMessages);
   const [refreshing, setRefreshing] = useState(false);
 

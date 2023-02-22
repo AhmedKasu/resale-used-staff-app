@@ -5,7 +5,7 @@ import CustomButton from '../components/CustomButton';
 import AppLogo from '../components/AppLogo';
 import defaultStyles from '../config/styles';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
       style={styles.background}
@@ -17,12 +17,12 @@ const WelcomeScreen = () => {
       <View style={styles.buttonContainer}>
         <CustomButton
           title='Login'
-          onPress={() => console.log('logIn')}
+          onPress={() => navigation.navigate('Login')}
           color={'primary'}
         />
         <CustomButton
           title='Register'
-          onPress={() => console.log('register')}
+          onPress={() => navigation.navigate('Register')}
           color={'secondary'}
         />
       </View>

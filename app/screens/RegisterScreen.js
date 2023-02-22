@@ -1,9 +1,9 @@
 import { View, StyleSheet } from 'react-native';
 
-import CustomForm from '../components/AppForm/CustomForm';
-import CustomFormField from '../components/AppForm/CustomFormField';
-import SubmitButton from '../components/AppForm/SubmitButton';
-import HideKeyboard from '../components/AppForm/HideKeyboard';
+import CustomForm from '../components/Forms/CustomForm';
+import CustomFormField from '../components/Forms/CustomFormField';
+import SubmitButton from '../components/Forms/SubmitButton';
+import HideKeyboard from '../components/Forms/HideKeyboard';
 import { validationSchema } from '../utils/formHelpers';
 import * as Yup from 'yup';
 
@@ -17,6 +17,7 @@ const RegisterScreen = () => {
   return (
     <HideKeyboard>
       <View style={styles.container}>
+        <View></View>
         <CustomForm
           initialValues={{
             name: '',
@@ -36,13 +37,14 @@ const RegisterScreen = () => {
           <CustomFormField
             autoCorrect={false}
             autoCapitalize='none'
-            icon={'lock'}
+            icon='lock'
             secureTextEntry
-            placeholder={'Password'}
-            name={'password'}
+            placeholder='Password'
+            name='password'
             TextContentType='password'
           />
-          <SubmitButton title={'Register'} />
+
+          <SubmitButton title='Register' />
         </CustomForm>
       </View>
     </HideKeyboard>
@@ -52,8 +54,9 @@ const RegisterScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
-    marginTop: 30,
+    backgroundColor: 'white',
+    paddingHorizontal: 20,
+    paddingTop: 50,
   },
 });
 

@@ -2,27 +2,29 @@ import { View, Image, StyleSheet } from 'react-native';
 
 import CustomText from '../components/CustomText';
 import ListItem from '../components/Lists/ListItem';
+import SafeAreaScreen from './SafeAreScreen';
 
 import colors from '../config/colors';
 
-const ListingDetailsScreen = () => {
+const ListingDetailsScreen = ({ route }) => {
+  const listing = route.params;
   return (
-    <View>
-      <Image style={styles.image} source={require('../assets/watch.jpg')} />
-      <View style={styles.detailsContainer}>
-        <CustomText style={styles.description}>
-          A Casio watch in excellent condition
-        </CustomText>
-        <CustomText style={styles.price}>$350</CustomText>
-      </View>
+    <SafeAreaScreen>
       <View>
-        <ListItem
-          image={require('../assets/Ahmed.jpg')}
-          title='Ahmed Kasu'
-          subTitle='5 Listings'
-        />
+        <Image style={styles.image} source={listing.image} />
+        <View style={styles.detailsContainer}>
+          <CustomText style={styles.description}>{listing.title}</CustomText>
+          <CustomText style={styles.price}>{`€ ${listing.price}`}</CustomText>
+        </View>
+        <View>
+          <ListItem
+            image={require('../assets/Ahmed.jpg')}
+            title='Ahmed Kasu'
+            subTitle='5 Listings'
+          />
+        </View>
       </View>
-    </View>
+    </SafeAreaScreen>
   );
 };
 

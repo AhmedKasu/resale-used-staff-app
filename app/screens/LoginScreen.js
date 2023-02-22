@@ -2,19 +2,19 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import AppLogo from '../components/AppLogo';
-import CustomFormField from '../components/AppForm/CustomFormField';
-import CustomForm from '../components/AppForm/CustomForm';
-import HideKeyboard from '../components/AppForm/HideKeyboard';
-import SubmitButton from '../components/AppForm/SubmitButton';
+import CustomFormField from '../components/Forms/CustomFormField';
+import CustomForm from '../components/Forms/CustomForm';
+import HideKeyboard from '../components/Forms/HideKeyboard';
+import SubmitButton from '../components/Forms/SubmitButton';
 import { validationSchema } from '../utils/formHelpers';
 import * as Yup from 'yup';
 
 const LogInSchema = Yup.object().shape({
   email: validationSchema.email,
-  password: validationSchema.email,
+  password: validationSchema.password,
 });
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   return (
     <HideKeyboard>
       <View style={styles.container}>
@@ -23,7 +23,10 @@ const LoginScreen = () => {
         </View>
         <CustomForm
           initialValues={{ email: '', password: '' }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => {
+            console.log(values);
+            navigation.navigate('Home');
+          }}
           validationSchema={LogInSchema}>
           <View style={styles.inputsContainer}>
             <CustomFormField
@@ -56,6 +59,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'white',
   },
   appLogoContainer: {
     alignSelf: 'center',
