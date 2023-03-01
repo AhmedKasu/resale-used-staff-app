@@ -11,7 +11,7 @@ const ListingDetailsScreen = ({ route }) => {
   return (
     <SafeAreaScreen>
       <View>
-        <Image style={styles.image} source={listing.image} />
+        <Image style={styles.image} source={{ uri: listing.images[0].url }} />
         <View style={styles.detailsContainer}>
           <CustomText style={styles.description}>{listing.title}</CustomText>
           <CustomText style={styles.price}>{`€ ${listing.price}`}</CustomText>

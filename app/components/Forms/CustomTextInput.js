@@ -1,4 +1,5 @@
 import { TextInput, StyleSheet, View } from 'react-native';
+
 import { MaterialIcons } from '@expo/vector-icons';
 
 import colors from '../../config/colors';
@@ -29,7 +30,7 @@ const CustomTextInput = ({ icon, currency, width = '100%', ...otherProps }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.white,
     borderRadius: 25,
     flexDirection: 'row',
     padding: 15,

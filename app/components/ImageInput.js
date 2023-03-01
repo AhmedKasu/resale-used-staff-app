@@ -32,7 +32,14 @@ const ImageInput = ({ imageUri, onChangeImage }) => {
         quality: 0.5,
       });
 
-      if (!result.cancelled) onChangeImage(result.uri);
+      const { fileName: name, type, uri } = result;
+
+      if (!result.cancelled)
+        onChangeImage({
+          name: name ? name : uri.substring(uri.lenght / 3),
+          type,
+          uri,
+        });
     } catch (error) {
       console.log('error :', error);
       alert('error accessing library');
@@ -76,7 +83,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     margin: 7,
-    backgroundColor: colors.light,
+    backgroundColor: colors.white,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,

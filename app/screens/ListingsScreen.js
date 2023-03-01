@@ -1,49 +1,50 @@
-import { View, StyleSheet, FlatList } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, FlatList, StyleSheet } from 'react-native';
 
+import ActivityIndicator from '../components/ActivityIndicator';
 import CustomCard from '../components/CustomCard';
-import colors from '../config/colors';
+import Reload from '../api/components/Reload';
 import routes from '../components/Navigation/routes';
 import SafeAreaScreen from './SafeAreScreen';
+import listingsApi from '../api/listings';
 
-const listings = [
-  {
-    id: 1,
-    title: 'Casio Watch in excellent condition',
-    price: 380,
-    image: require('../assets/watch.jpg'),
-  },
-  {
-    id: 2,
-    title: 'Antique chair in good condition',
-    price: 280,
-    image: require('../assets/chair.jpg'),
-  },
-  {
-    id: 3,
-    title: 'Iphone X, used like new',
-    price: 500,
-    image: require('../assets/iphoneX.jpg'),
-  },
-];
+import useApi from '../hooks/useApi';
 
 const ListingsScreen = ({ navigation }) => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const {
+    data,
+    error,
+    loading,
+    request: fetchListings,
+  } = useApi(listingsApi.getListings);
+
+  useEffect(() => {
+    fetchListings();
+  }, []);
+
   return (
     <SafeAreaScreen>
       <View style={styles.container}>
+        <ActivityIndicator visible={loading} />
+        <Reload visible={error} onPress={() => fetchListings()} />
         <FlatList
-          showsVerticalScrollIndicator={false}
-          data={listings}
+          data={data}
           keyExtractor={(listing) => listing.id.toString()}
           renderItem={({ item }) => (
             <CustomCard
-              image={item.image}
+              imageUri={{ uri: item.images[0].url }}
               title={item.title}
-              subTitle={`$${item.price}`}
+              subTitle={`€${item.price}`}
               onPress={() =>
                 navigation.navigate(routes.LISTING_DETAILS_SCREEN, item)
               }
             />
           )}
+          showsVerticalScrollIndicator={false}
+          refreshing={refreshing}
+          onRefresh={() => fetchListings()}
         />
       </View>
     </SafeAreaScreen>
@@ -52,7 +53,7 @@ const ListingsScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
+    flex: 1,
     paddingHorizontal: 20,
   },
 });

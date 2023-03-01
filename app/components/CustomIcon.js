@@ -20,7 +20,7 @@ const CustomIcon = ({
   };
 
   return (
-    <View style={[iconWrapper, { backgroundColor: colors[color] }]}>
+    <View style={[iconWrapper, { backgroundColor: color }]}>
       <MaterialCommunityIcons name={name} size={size * 0.5} color={iconColor} />
     </View>
   );

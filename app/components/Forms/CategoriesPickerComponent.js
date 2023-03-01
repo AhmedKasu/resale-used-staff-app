@@ -8,8 +8,8 @@ const CategoriesPickerItemComponent = ({ item, onPress }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
-        <CustomIcon name={item.icon} color={item.color} size={80} />
-        <CustomText style={styles.label}>{item.label}</CustomText>
+        <CustomIcon name={item.icon} color={item.backgroundColor} size={80} />
+        <CustomText style={styles.label}>{item.name}</CustomText>
       </TouchableOpacity>
     </View>
   );

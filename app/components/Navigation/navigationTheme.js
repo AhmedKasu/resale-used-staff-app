@@ -6,6 +6,6 @@ export default {
   colors: {
     ...DefaultTheme.colors,
     primary: colors.secondary,
-    background: colors.white,
+    background: colors.light,
   },
 };

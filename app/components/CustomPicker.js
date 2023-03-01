@@ -39,7 +39,7 @@ const CustomPicker = ({
             />
           )}
           {selectedItem ? (
-            <CustomText style={styles.text}>{selectedItem.label}</CustomText>
+            <CustomText style={styles.text}>{selectedItem.name}</CustomText>
           ) : (
             <CustomText style={styles.placeholder}>{placeholder}</CustomText>
           )}
@@ -77,7 +77,7 @@ const CustomPicker = ({
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.white,
     borderRadius: 25,
     flexDirection: 'row',
     padding: 15,
