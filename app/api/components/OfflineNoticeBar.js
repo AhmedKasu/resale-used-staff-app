@@ -7,9 +7,10 @@ import colors from '../../config/colors';
 
 const OfflineNoticeBar = () => {
   const netInfo = useNetInfo();
+  const visible = !netInfo.isConnected && !netInfo.isInternetReachable;
   return (
     <>
-      {!netInfo.isInternetReachable && (
+      {visible && (
         <View style={styles.container}>
           <CustomText style={styles.text}>No internet connection</CustomText>
         </View>
