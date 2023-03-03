@@ -1,4 +1,5 @@
-import { View, Image, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Image } from 'react-native-expo-image-cache';
 
 import CustomText from '../components/CustomText';
 import ListItem from '../components/Lists/ListItem';
@@ -11,7 +12,12 @@ const ListingDetailsScreen = ({ route }) => {
   return (
     <SafeAreaScreen>
       <View>
-        <Image style={styles.image} source={{ uri: listing.images[0].url }} />
+        <Image
+          style={styles.image}
+          tint='light'
+          preview={{ uri: listing.images[0].thumbnailUrl }}
+          uri={listing.images[0].url}
+        />
         <View style={styles.detailsContainer}>
           <CustomText style={styles.description}>{listing.title}</CustomText>
           <CustomText style={styles.price}>{`€ ${listing.price}`}</CustomText>

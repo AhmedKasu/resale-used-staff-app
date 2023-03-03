@@ -34,7 +34,7 @@ const ListingsScreen = ({ navigation }) => {
           keyExtractor={(listing) => listing.id.toString()}
           renderItem={({ item }) => (
             <CustomCard
-              imageUri={{ uri: item.images[0].url }}
+              image={item.images[0]}
               title={item.title}
               subTitle={`€${item.price}`}
               onPress={() =>
