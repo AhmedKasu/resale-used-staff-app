@@ -30,7 +30,7 @@ const CustomTextInput = ({ icon, currency, width = '100%', ...otherProps }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light,
+    backgroundColor: colors.white,
     borderRadius: 25,
     flexDirection: 'row',
     padding: 15,

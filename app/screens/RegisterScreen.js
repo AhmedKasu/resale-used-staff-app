@@ -2,10 +2,13 @@ import { View, StyleSheet } from 'react-native';
 
 import CustomForm from '../components/Forms/CustomForm';
 import CustomFormField from '../components/Forms/CustomFormField';
+import ErrorMessage from '../components/Forms/ErrorMessage';
 import SubmitButton from '../components/Forms/SubmitButton';
 import HideKeyboard from '../components/Forms/HideKeyboard';
+import useAuth from '../hooks/useAuth';
 import { validationSchema } from '../utilities/formHelpers';
 import * as Yup from 'yup';
+import colors from '../config/colors';
 
 const registerValidationSchema = Yup.object().shape({
   name: validationSchema.firstNameLastName,
@@ -14,6 +17,8 @@ const registerValidationSchema = Yup.object().shape({
 });
 
 const RegisterScreen = () => {
+  const { error, register } = useAuth();
+
   return (
     <HideKeyboard>
       <View style={styles.container}>
@@ -24,8 +29,10 @@ const RegisterScreen = () => {
             email: '',
             password: '',
           }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => register(values)}
           validationSchema={registerValidationSchema}>
+          <ErrorMessage visible={error ? true : false} error={error} />
+
           <CustomFormField name={'name'} icon={'person'} placeholder={'Name'} />
           <CustomFormField
             autoCorrect={false}
@@ -54,7 +61,7 @@ const RegisterScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.light,
     paddingHorizontal: 20,
     paddingTop: 50,
   },

@@ -27,7 +27,7 @@ const FormImagePicker = ({ name }) => {
           />
         )}
       </FieldArray>
-      <ErrorMessage touched={touched[name]} error={errors[name]} />
+      <ErrorMessage visible={touched[name]} error={errors[name]} />
     </>
   );
 };

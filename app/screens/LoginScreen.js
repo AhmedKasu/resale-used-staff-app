@@ -11,6 +11,7 @@ import SubmitButton from '../components/Forms/SubmitButton';
 import useAuth from '../hooks/useAuth';
 import { validationSchema } from '../utilities/formHelpers';
 import * as Yup from 'yup';
+import colors from '../config/colors';
 
 const LogInSchema = Yup.object().shape({
   email: validationSchema.email,
@@ -62,7 +63,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.light,
   },
   appLogoContainer: {
     alignSelf: 'center',
