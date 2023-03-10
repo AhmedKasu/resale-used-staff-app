@@ -4,7 +4,7 @@ import CustomForm from '../components/Forms/CustomForm';
 import CustomFormField from '../components/Forms/CustomFormField';
 import SubmitButton from '../components/Forms/SubmitButton';
 import HideKeyboard from '../components/Forms/HideKeyboard';
-import { validationSchema } from '../utils/formHelpers';
+import { validationSchema } from '../utilities/formHelpers';
 import * as Yup from 'yup';
 
 const registerValidationSchema = Yup.object().shape({

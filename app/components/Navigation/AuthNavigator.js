@@ -12,7 +12,7 @@ const Stack = createNativeStackNavigator();
 const AuthNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen
-      name={routes.REGISTER_SCREEN}
+      name={routes.WELCOME_SCREEN}
       component={WelcomeScreen}
       options={{
         headerShown: false,

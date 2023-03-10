@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import AppLogo from '../components/AppLogo';
 import CustomFormField from '../components/Forms/CustomFormField';
 import CustomForm from '../components/Forms/CustomForm';
+import ErrorMessage from '../components/Forms/ErrorMessage';
 import HideKeyboard from '../components/Forms/HideKeyboard';
 import SubmitButton from '../components/Forms/SubmitButton';
-import { validationSchema } from '../utils/formHelpers';
+
+import useAuth from '../hooks/useAuth';
+import { validationSchema } from '../utilities/formHelpers';
 import * as Yup from 'yup';
 
 const LogInSchema = Yup.object().shape({
@@ -14,7 +17,9 @@ const LogInSchema = Yup.object().shape({
   password: validationSchema.password,
 });
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
+  const { login, error } = useAuth();
+
   return (
     <HideKeyboard>
       <View style={styles.container}>
@@ -23,12 +28,10 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <CustomForm
           initialValues={{ email: '', password: '' }}
-          onSubmit={(values) => {
-            console.log(values);
-            navigation.navigate('Home');
-          }}
+          onSubmit={(values) => login(values)}
           validationSchema={LogInSchema}>
           <View style={styles.inputsContainer}>
+            <ErrorMessage visible={error ? true : false} error={error} />
             <CustomFormField
               autoCapitalize='none'
               autoCorrect={false}

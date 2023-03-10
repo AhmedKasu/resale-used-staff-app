@@ -1,7 +1,7 @@
-import api from './client';
+import client from './client';
 
 const endpoint = '/categories';
 
-const getCategories = () => api.get(endpoint);
+const getCategories = () => client.get(endpoint);
 
 export default { getCategories };

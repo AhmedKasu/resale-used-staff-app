@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Modal, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import categoriesApi from '../api/categories';
 import listingsApi from '../api/listings';

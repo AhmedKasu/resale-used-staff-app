@@ -1,5 +1,7 @@
 import { View, StyleSheet, FlatList } from 'react-native';
 
+import useAuth from '../hooks/useAuth';
+
 import ListItem from '../components/Lists/ListItem';
 import CustomIcon from '../components/CustomIcon';
 import ListSeparator from '../components/Lists/ListSeparator';
@@ -13,7 +15,7 @@ const items = [
     title: 'My Listings',
     icon: {
       name: 'format-list-bulleted',
-      backgroundColor: 'primary',
+      backgroundColor: colors.primary,
     },
     targetScreen: 'MyListings',
   },
@@ -21,21 +23,22 @@ const items = [
     title: 'My Messages',
     icon: {
       name: 'email',
-      backgroundColor: 'secondary',
+      backgroundColor: colors.secondary,
     },
     targetScreen: routes.MESSAGES_SCREEN,
   },
 ];
 
 const MyAccountScreen = ({ navigation }) => {
+  const { logOut, user } = useAuth();
   return (
     <SafeAreaScreen>
       <View style={styles.container}>
         <View style={styles.profile}>
           <ListItem
             image={require('../assets/Ahmed.jpg')}
-            title={'Ahmed Kasu'}
-            subTitle={'ankassu@gmail.com'}
+            title={user.name}
+            subTitle={user.email}
           />
         </View>
         <View style={styles.flatList}>
@@ -61,8 +64,10 @@ const MyAccountScreen = ({ navigation }) => {
         <View style={styles.ListingIcon}>
           <ListItem
             title={'Logout'}
-            onPress={() => console.log('My Listings')}
-            IconComponent={<CustomIcon name={'logout'} color={'warning'} />}
+            onPress={() => logOut()}
+            IconComponent={
+              <CustomIcon name={'logout'} color={colors.warning} />
+            }
           />
         </View>
       </View>

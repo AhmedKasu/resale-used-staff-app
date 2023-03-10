@@ -16,7 +16,7 @@ const CustomFormField = ({ name, width, ...otherProps }) => {
         value={values[name]}
         {...otherProps}
       />
-      <ErrorMessage touched={touched[name]} error={errors[name]} />
+      <ErrorMessage visible={touched[name]} error={errors[name]} />
     </>
   );
 };
